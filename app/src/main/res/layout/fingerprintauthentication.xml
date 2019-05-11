@@ -25,7 +25,7 @@
         android:layout_below="@+id/headingLabel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="0dp"
-        app:srcCompat="@drawable/ic_fingerprint-web"/>
+        app:srcCompat="@drawable/ic_fingerprint_web"/>
 
     <TextView
         android:id="@+id/paraLabel"

@@ -1,4 +1,4 @@
-package in.tvac.akshayejh.fingerprintauthapp;
+package com.fastaccess.github.di.modules;
 
 import android.Manifest;
 import android.annotation.TargetApi;
