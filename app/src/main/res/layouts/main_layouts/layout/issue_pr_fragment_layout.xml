@@ -29,8 +29,10 @@
                 app:titleEnabled="false">
 
                 <LinearLayout
+                    android:id="@+id/issueHeaderWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="invisible"
                     android:layout_marginTop="?actionBarSize"
                     android:orientation="vertical"
                     app:layout_collapseMode="none">

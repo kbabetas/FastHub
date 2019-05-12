@@ -8,7 +8,7 @@ import com.fastaccess.data.persistence.models.NotificationModel
 import com.fastaccess.extension.uiThread
 import com.fastaccess.github.extensions.map
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Maybe
 import javax.inject.Inject
 
 /**
@@ -26,7 +26,7 @@ class NotificationRepositoryProvider @Inject constructor(private val dao: Notifi
     override fun deleteAll(unread: Boolean) = dao.deleteAll(unread)
     override fun markAsRead(id: String): Completable = Completable.fromCallable { dao.markAsRead(id) }.uiThread()
     override fun markAllAsRead(): Completable = Completable.fromCallable { dao.markAllAsRead() }.uiThread()
-    override fun getAllNotificationsAsSingle(unread: Boolean): Single<List<NotificationModel>> = Single.just(dao.getAllNotificationsBlocking(unread))
+    override fun getAllNotificationsAsMaybe(unread: Boolean): Maybe<List<NotificationModel>> = Maybe.just(dao.getAllNotificationsBlocking(unread))
         .uiThread()
 
     /**
@@ -56,5 +56,5 @@ interface NotificationRepository {
     fun deleteAll(unread: Boolean)
     fun markAsRead(id: String): Completable
     fun markAllAsRead(): Completable
-    fun getAllNotificationsAsSingle(unread: Boolean): Single<List<NotificationModel>>
+    fun getAllNotificationsAsMaybe(unread: Boolean): Maybe<List<NotificationModel>>
 }

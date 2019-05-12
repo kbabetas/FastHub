@@ -4,8 +4,8 @@ import android.os.Bundle
 import com.fastaccess.github.R
 import com.fastaccess.github.base.BaseActivity
 import com.fastaccess.github.extensions.isTrue
-import com.fastaccess.github.ui.modules.main.fragment.MainFragment
 import com.fastaccess.github.extensions.replace
+import com.fastaccess.github.ui.modules.main.fragment.MainFragment
 
 class MainActivity : BaseActivity() {
 

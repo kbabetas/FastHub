@@ -45,7 +45,6 @@ import kotlinx.android.synthetic.main.empty_state_layout.*
 import kotlinx.android.synthetic.main.issue_header_row_item.*
 import kotlinx.android.synthetic.main.issue_pr_fragment_layout.*
 import net.nightwhistler.htmlspanner.HtmlSpanner
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -152,6 +151,7 @@ class IssueFragment : BaseFragment(), LockUnlockFragment.OnLockReasonSelected,
     }
 
     private fun initIssue(model: IssueModel, me: LoginModel?) {
+        issueHeaderWrapper.isVisible = true
         val theme = preference.theme
         title.text = model.title
         opener.text = SpannableBuilder.builder()
@@ -187,9 +187,6 @@ class IssueFragment : BaseFragment(), LockUnlockFragment.OnLockReasonSelected,
         bottomBar.menu.let {
             val isAuthor = login == me?.login || model.authorAssociation?.equals("OWNER", true) == true ||
                 model.authorAssociation?.equals("COLLABORATOR", true) == true
-
-            Timber.e("$isAuthor")
-
             it.findItem(R.id.edit).isVisible = model.viewerDidAuthor == true
             it.findItem(R.id.assignees).isVisible = isAuthor
             it.findItem(R.id.milestone).isVisible = isAuthor

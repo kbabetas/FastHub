@@ -5,7 +5,6 @@ import androidx.room.*
 import com.fastaccess.data.persistence.models.LoginModel
 import com.fastaccess.data.persistence.models.LoginModel.Companion.TABLE_NAME
 import io.reactivex.Maybe
-import io.reactivex.Single
 
 /**
  * Created by Kosh on 11.05.18.
@@ -18,7 +17,7 @@ import io.reactivex.Single
 
     @Query("SELECT * FROM $TABLE_NAME WHERE `isLoggedIn` != 1") fun getAllLiveData(): LiveData<LoginModel?>
 
-    @Query("SELECT * FROM $TABLE_NAME WHERE `isLoggedIn` != 1") fun getAll(): Single<List<LoginModel?>>
+    @Query("SELECT * FROM $TABLE_NAME WHERE `isLoggedIn` != 1") fun getAll(): Maybe<List<LoginModel?>>
 
     @Query("SELECT * FROM $TABLE_NAME WHERE `isLoggedIn` == 1") fun getLoggedInUsers(): Maybe<List<LoginModel?>>
 

@@ -11,7 +11,6 @@ import com.fastaccess.domain.response.UserResponse
 import io.reactivex.Completable
 import io.reactivex.Maybe
 import io.reactivex.Observable
-import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import javax.inject.Inject
 
@@ -23,7 +22,7 @@ class LoginRepositoryProvider @Inject constructor(private val loginDao: LoginDao
     override fun getLogin(): Maybe<LoginModel?> = loginDao.getLogin()
     override fun getLoginBlocking(): LoginModel? = loginDao.getLoginBlocking()
     override fun getAllLiveData(): LiveData<LoginModel?> = loginDao.getAllLiveData()
-    override fun getAll(): Single<List<LoginModel?>> = loginDao.getAll()
+    override fun getAll(): Maybe<List<LoginModel?>> = loginDao.getAll()
     override fun getLoggedInUsers(): Observable<List<LoginModel?>> = loginDao.getLoggedInUsers().toObservable()
     override fun insert(login: LoginModel): Long = loginDao.insert(login)
     override fun update(login: LoginModel): Completable = Completable.fromCallable { loginDao.update(login) }
@@ -41,7 +40,7 @@ interface LoginLocalRepository {
     fun getLogin(): Maybe<LoginModel?>
     fun getLoginBlocking(): LoginModel?
     fun getAllLiveData(): LiveData<LoginModel?>
-    fun getAll(): Single<List<LoginModel?>>
+    fun getAll(): Maybe<List<LoginModel?>>
     fun getLoggedInUsers(): Observable<List<LoginModel?>>
     fun insert(login: LoginModel): Long
     fun update(login: LoginModel): Completable

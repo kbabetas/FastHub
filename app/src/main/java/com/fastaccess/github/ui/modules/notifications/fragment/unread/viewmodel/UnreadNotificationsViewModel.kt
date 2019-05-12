@@ -46,7 +46,7 @@ class UnreadNotificationsViewModel @Inject constructor(
 
     fun markAsRead(id: String) = add(provider.markAsRead(id).subscribe())
     fun markAllAsRead() = add(provider.markAllAsRead().subscribe({}, { it.printStackTrace() }))
-    fun getAllUnreadNotifications() = provider.getAllNotificationsAsSingle(true)
+    fun getAllUnreadNotifications() = provider.getAllNotificationsAsMaybe(true)
 
     fun hasNext() = isLastPage
 }

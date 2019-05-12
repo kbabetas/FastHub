@@ -34,3 +34,6 @@ fun Completable.uiThread() = this.subscribeOn(Schedulers.io())
 
 fun <T> Single<T>.uiThread() = this.subscribeOn(Schedulers.io())
     .observeOn(AndroidSchedulers.mainThread())
+
+fun <T> Maybe<T>.uiThread() = this.subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())

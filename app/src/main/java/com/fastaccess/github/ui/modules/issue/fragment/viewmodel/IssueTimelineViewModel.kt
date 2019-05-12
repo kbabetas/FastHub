@@ -7,6 +7,7 @@ import com.fastaccess.data.model.TimelineModel
 import com.fastaccess.data.repository.IssueRepositoryProvider
 import com.fastaccess.data.repository.LoginRepositoryProvider
 import com.fastaccess.github.base.BaseViewModel
+import com.fastaccess.github.extensions.filterNull
 import com.fastaccess.github.extensions.map
 import com.fastaccess.github.usecase.issuesprs.CloseOpenIssuePrUseCase
 import com.fastaccess.github.usecase.issuesprs.GetIssueTimelineUseCase
@@ -41,6 +42,7 @@ class IssueTimelineViewModel @Inject constructor(
     }
 
     fun getIssue(login: String, repo: String, number: Int) = issueRepositoryProvider.getIssueByNumber("$login/$repo", number)
+        .filterNull()
         .map { Pair(it, loginRepositoryProvider.getLoginBlocking()) }
 
     fun loadData(login: String, repo: String, number: Int, reload: Boolean = false) {
