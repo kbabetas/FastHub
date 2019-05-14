@@ -33,7 +33,10 @@ Yet another **open-source** GitHub client app but unlike any other app, FastHub 
   - Logout
   - Login
   - Issue Screen
-- **Much more to come later**
+- **To Do**
+  - Repositories
+  - Commits
+  - **And much more to come later...**
 
 ## Features  
 - **App**
