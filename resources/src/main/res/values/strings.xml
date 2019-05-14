@@ -609,4 +609,6 @@
     <string name="limit_by">Limit by</string>
     <string name="no_internet_connection">Not connected to Internet</string>
     <string name="lock_reason">Lock Reason</string>
+    <string name="select_home">Select Page</string>
+
 </resources>
