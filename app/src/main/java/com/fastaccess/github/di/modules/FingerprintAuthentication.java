@@ -32,6 +32,12 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+/**
+ * This class is the main activity class for API
+ * Fingerprint Authentication
+ * @author  akshayejh
+ * @author  IoannisVougias
+ */
 public class FingerprintAuthentication extends AppCompatActivity {
 
 
@@ -46,6 +52,12 @@ public class FingerprintAuthentication extends AppCompatActivity {
     private Cipher cipher;
     private String KEY_NAME = "AndroidKey";
 
+
+    /**
+     * This method is used to create the Fingerprint Authentication
+     * activity and it contains 5 checks regarding Authentication
+     * @param savedInstanceState The saved state of the application
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +112,10 @@ public class FingerprintAuthentication extends AppCompatActivity {
         }
 
     }
-
+    /**
+     * This method creates a key store that helps us store the keys
+     * keyGenerator generates new keys each time the authentication is done
+     */
     @TargetApi(Build.VERSION_CODES.M)
     private void generateKey() {
 
@@ -130,7 +145,9 @@ public class FingerprintAuthentication extends AppCompatActivity {
         }
 
     }
-
+    /**
+     * This method creates a cipher
+     */
     @TargetApi(Build.VERSION_CODES.M)
     public boolean cipherInit() {
         try {
