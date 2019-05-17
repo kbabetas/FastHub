@@ -1,4 +1,4 @@
-package com.fastaccess.github.di.modules;
+package com.fastaccess.github.ui.modules.auth.login;
 
 import android.Manifest;
 import android.annotation.TargetApi;

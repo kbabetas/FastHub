@@ -12,6 +12,7 @@ import com.fastaccess.github.extensions.isTrue
 import com.fastaccess.github.extensions.observeNotNull
 import com.fastaccess.github.ui.adapter.ProfileReposAdapter
 import com.fastaccess.github.ui.adapter.base.CurrentState
+import com.fastaccess.github.ui.modules.auth.login.FingerprintAuthentication
 import com.fastaccess.github.ui.modules.profile.repos.viewmodel.ProfileReposViewModel
 import com.fastaccess.github.utils.EXTRA
 import com.fastaccess.github.utils.extensions.addDivider
@@ -29,6 +30,7 @@ class ProfileReposFragment : BaseFragment() {
     private val viewModel by lazy { ViewModelProviders.of(this, viewModelFactory).get(ProfileReposViewModel::class.java) }
     private val loginBundle: String by lazy { arguments?.getString(EXTRA) ?: "" }
     private val adapter by lazy { ProfileReposAdapter() }
+    private val fingerprintAuthentication: FingerprintAuthentication? = null
 
     override fun viewModel(): BaseViewModel? = viewModel
     override fun layoutRes(): Int = R.layout.simple_refresh_list_layout
@@ -42,6 +44,7 @@ class ProfileReposFragment : BaseFragment() {
         swipeRefresh.setOnRefreshListener {
             if (isConnected()) {
                 recyclerView.resetScrollState()
+                FingerprintAuthentication.onCreate(savedInstanceState)
                 viewModel.loadRepos(loginBundle, true)
             } else {
                 swipeRefresh.isRefreshing = false

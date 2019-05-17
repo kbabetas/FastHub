@@ -1,4 +1,4 @@
-package com.fastaccess.github.di.modules;
+package com.fastaccess.github.ui.modules.auth.login;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * This class is that provides us with access to
+ * This class provides us with access to
  * the fingerprint hardware. Authentication Call back
  * helps us get all errors connected with the success of the tasks
  * @author  akshayejh
@@ -56,8 +56,8 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationError(int errorCode, CharSequence errString) {
 
-        this.update("There was an Auth Error. " + errString, false);
-
+        boolean b = this.update("There was an Auth Error. " + errString, false);
+        //return b;
     }
     /**
      * This method updates the UI when the authentication failed
@@ -67,7 +67,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationFailed() {
 
-        this.update("Auth Failed. ", false);
+        this.update("Auth Failed", false);
 
     }
     /**
@@ -94,7 +94,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
     @Override
     public void onAuthenticationSucceeded(FingerprintManager.AuthenticationResult result) {
 
-        this.update("You can now access the app.", true);
+        this.update("You can now access the repository", true);
 
     }
     /**
@@ -103,7 +103,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
      * @param b boolean parameter than is false when there is an error
      *          and true when there is no error
      */
-    private void update(String s, boolean b) {
+    protected boolean update(String s, boolean b) {
 
         TextView paraLabel = (TextView) ((Activity)context).findViewById(R.id.paraLabel);
         ImageView imageView = (ImageView) ((Activity)context).findViewById(R.id.fingerprintImage);
@@ -120,6 +120,6 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
             imageView.setImageResource(R.mipmap.action_done);
 
         }
-
+        return b;
     }
 }
